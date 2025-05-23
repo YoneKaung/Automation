@@ -1,21 +1,7 @@
----
-- hosts: all
-  become: 'yes'
+- name: Ping all target hosts
+  hosts: all
+  gather_facts: no
+
   tasks:
-    - name: Display Hostname
-      debug:
-        msg: 'Hostname: {{ ansible_hostname }}'
-    - name: Display OS Info
-      debug:
-        msg: >-
-          OS: {{ ansible_distribution }} {{ ansible_distribution_version }} ({{
-          ansible_os_family }})
-    - name: Display Primary IP Address
-      debug:
-        msg: 'Primary IP: {{ ansible_default_ipv4.address }}'
-    - name: Display Current Date and Time
-      ansible.builtin.command: date
-      register: current_time
-    - name: Show Current Date and Time
-      debug:
-        msg: 'Datetime: {{ current_time.stdout }}'
+    - name: Ping test to confirm host reachability
+      ansible.builtin.ping:
