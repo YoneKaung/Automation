@@ -1,7 +1,6 @@
-- name: Gather OS Information and IP Address
-  hosts: all
+---
+- hosts: all
   become: 'yes'
-  gather_facts: 'yes'
   tasks:
     - name: Display Hostname
       debug:
