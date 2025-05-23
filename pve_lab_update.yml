@@ -1,25 +1,23 @@
+---
 - name: Gather OS Information and IP Address
   hosts: all
-  become: yes
-  gather_facts: yes
-
+  become: 'no'
+  gather_facts: 'yes'
   tasks:
     - name: Display Hostname
       debug:
-        msg: "Hostname: {{ ansible_hostname }}"
-
+        msg: 'Hostname: {{ ansible_hostname }}'
     - name: Display OS Info
       debug:
-        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }} ({{ ansible_os_family }})"
-
+        msg: >-
+          OS: {{ ansible_distribution }} {{ ansible_distribution_version }} ({{
+          ansible_os_family }})
     - name: Display Primary IP Address
       debug:
-        msg: "Primary IP: {{ ansible_default_ipv4.address }}"
-
+        msg: 'Primary IP: {{ ansible_default_ipv4.address }}'
     - name: Display Current Date and Time
       ansible.builtin.command: date
       register: current_time
-
     - name: Show Current Date and Time
       debug:
-        msg: "Datetime: {{ current_time.stdout }}"
+        msg: 'Datetime: {{ current_time.stdout }}'
