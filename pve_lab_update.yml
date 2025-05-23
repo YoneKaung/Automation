@@ -1,5 +1,5 @@
 - name: Ping all target hosts
-  hosts: all
+  hosts: PVE_Server
   gather_facts: no
 
   tasks:
